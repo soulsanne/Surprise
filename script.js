@@ -146,13 +146,16 @@ let i = 0;
 function startTyping() {
   if (i < message.length) {
     typingText.textContent += message.charAt(i);
-   typingSound.currentTime = 0;
-typingSound.play().catch(() => {});
+
+    // Clone dan mainkan suara ketikan agar tidak delay
+    const sound = typingSound.cloneNode();
+    sound.play();
 
     i++;
-    setTimeout(startTyping, 60);
+    setTimeout(startTyping, 50); // kecepatan ketikan
   }
 }
+
 
 // 🌸 Falling Flower Background
 function startBackgroundFlowers() {
