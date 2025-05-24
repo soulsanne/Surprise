@@ -100,8 +100,8 @@ function appendPin(num) {
   if (currentPin.length < 4) {
     currentPin += num;
     pinDisplay.textContent = currentPin.padEnd(4, "_");
-   clickSound.currentTime = 0;
-clickSound.play().catch(() => {});
+   const sound = clickSound.cloneNode();
+sound.play();
 
 
     const buttons = document.querySelectorAll('.keypad button');
