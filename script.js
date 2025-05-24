@@ -123,13 +123,19 @@ function submitPin() {
   if (currentPin === correctPin) {
     pinPage.classList.remove("active");
     greetingPage.classList.add("active");
-    startTyping();
-    startBackgroundFlowers();
+
+    // Pastikan layout sudah berubah dulu, lalu mulai typing
+    setTimeout(() => {
+      i = 0;
+      typingText.textContent = "";
+      startTyping();
+    }, 300); // beri jeda 300ms untuk memastikan DOM update
   } else {
     alert("PIN salah!");
     clearPin();
   }
 }
+
 
 // Typing Message
 const message = `Selamat bertambah usia, bayikk gede kesayangan aku! 👶🏻🎂🩷🎉
