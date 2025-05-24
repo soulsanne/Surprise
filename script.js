@@ -117,10 +117,15 @@ function playGreeting() {
   startTyping();
 }
 
-const message = `Selamat ulang tahun, sayang! 🎂💖
+const message = `Selamat bertambah usia, bayikk gede kesayangan aku! 👶🏻🎂🩷🎉
 
-Semoga hari-harimu dipenuhi cinta, rezeki, dan kebahagiaan.
-Semoga kita selalu bersama dalam suka dan duka. 💑✨
+Semoga kamu sentiasa menjadi insan yang pemurah, rajin beribadat, dan diberkahi umur sepanjang hidupmu. 💞✨
+
+Semoga segala kesulitanmu dilapangkan, rezekimu dilimpahkan, dan perjalanan hidupmu dipermudahkan hingga ke akhir hayat. 💘🌈
+
+Semoga kamu—dan kita—direzekikan jodoh yang baik, bertanggungjawab dan bertolak ansur. Yang mampu menjaga dan memimpin rumahtangga ke jalan yang benar dan penuh keberkatan. 💝🏡
+
+Semoga setiap doa, impian dan harapan yang kamu impikan dan dambakan… dimakbulkan, satu demi satu. 🙏🏻🌟
 
 Aku sayang kamu, selalu. 💕`;
 
