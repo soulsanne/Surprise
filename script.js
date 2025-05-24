@@ -153,14 +153,17 @@ function startTyping() {
   if (i < message.length) {
     typingText.textContent += message.charAt(i);
 
-    // Clone dan mainkan suara ketikan agar tidak delay
-    const sound = typingSound.cloneNode();
-    sound.play();
+    // Putar suara tiap 2 huruf agar tidak spam
+    if (i % 2 === 0) {
+      const sound = typingSound.cloneNode();
+      sound.play();
+    }
 
     i++;
-    setTimeout(startTyping, 50); // kecepatan ketikan
+    setTimeout(startTyping, 50); // ketik lebih cepat
   }
 }
+
 
 
 // 🌸 Falling Flower Background
