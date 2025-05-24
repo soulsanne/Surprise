@@ -98,7 +98,6 @@ function showResults() {
 }
 
 buildQuiz();
-
 submitButton.addEventListener("click", showResults);
 
 // PIN Functions
@@ -106,6 +105,9 @@ function appendPin(num) {
   if (currentPin.length < 4) {
     currentPin += num;
     pinDisplay.textContent = currentPin.padEnd(4, "_");
+
+    // Putar suara klik
+    clickSound.currentTime = 0;
     clickSound.play();
 
     const buttons = document.querySelectorAll('.keypad button');
@@ -134,7 +136,7 @@ function submitPin() {
   }
 }
 
-// Typing Effect
+// Pesan ucapan
 const message = `Selamat bertambah usia, bayikk gede kesayangan aku! 👶🏻🎂🩷🎉
 
 Semoga kamu sentiasa menjadi insan yang pemurah, rajin beribadat, dan diberkahi umur sepanjang hidupmu. 💞✨
@@ -145,12 +147,22 @@ Semoga kamu—dan kita—direzekikan jodoh yang baik, bertanggungjawab dan berto
 
 Semoga setiap doa, impian dan harapan yang kamu impikan dan dambakan… dimakbulkan, satu demi satu. 🙏🏻🌟`;
 
-let i = 0;
 function startTyping() {
-  if (i < message.length) {
-    typingText.textContent += message.charAt(i);
-    typingSound.play();
-    i++;
-    setTimeout(startTyping, 100);
+  let i = 0;
+  typingSound.currentTime = 0;
+  typingSound.loop = true;
+  typingSound.play();
+
+  function type() {
+    if (i < message.length) {
+      typingText.textContent += message.charAt(i);
+      i++;
+      setTimeout(type, 50);
+    } else {
+      typingSound.pause();
+      typingSound.currentTime = 0;
+    }
   }
+
+  type();
 }
