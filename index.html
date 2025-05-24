@@ -12,34 +12,36 @@
     <div class="quiz-container">
       <h2>Sebelum melanjutkan, jawab pertanyaan berikut:</h2>
       <div id="quiz"></div>
-      <button id="submit">Kirim Jawaban</button>
+      <button id="submit" class="btn">Kirim Jawaban</button>
       <div id="results"></div>
     </div>
   </div>
 
   <!-- Halaman PIN -->
   <div id="pinPage" class="container">
-    <div class="pin-display" id="pinDisplay">____</div>
-    <div class="keypad">
-      <button onclick="appendPin('1')">1</button>
-      <button onclick="appendPin('2')">2</button>
-      <button onclick="appendPin('3')">3</button>
-      <button onclick="appendPin('4')">4</button>
-      <button onclick="appendPin('5')">5</button>
-      <button onclick="appendPin('6')">6</button>
-      <button onclick="appendPin('7')">7</button>
-      <button onclick="appendPin('8')">8</button>
-      <button onclick="appendPin('9')">9</button>
-      <button onclick="clearPin()">←</button>
-      <button onclick="appendPin('0')">0</button>
-      <button onclick="submitPin()">OK</button>
+    <div class="pin-container">
+      <div class="pin-display" id="pinDisplay">____</div>
+      <div class="keypad">
+        <button onclick="appendPin('1')">1</button>
+        <button onclick="appendPin('2')">2</button>
+        <button onclick="appendPin('3')">3</button>
+        <button onclick="appendPin('4')">4</button>
+        <button onclick="appendPin('5')">5</button>
+        <button onclick="appendPin('6')">6</button>
+        <button onclick="appendPin('7')">7</button>
+        <button onclick="appendPin('8')">8</button>
+        <button onclick="appendPin('9')">9</button>
+        <button onclick="clearPin()">←</button>
+        <button onclick="appendPin('0')">0</button>
+        <button onclick="submitPin()">OK</button>
+      </div>
     </div>
   </div>
 
   <!-- Halaman Ucapan -->
   <div id="greetingPage" class="container">
     <img src="images/birthday.png" alt="Selamat Ulang Tahun" class="decorative-image" />
-    <div id="typingText"></div>
+    <div id="typingText" class="typing-text"></div>
   </div>
 
   <!-- Audio -->
