@@ -2,15 +2,15 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Sayang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartu Ucapan Ulang Tahun</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Halaman Trivia -->
-  <div id="triviaPage" class="container active">
+  <!-- Halaman Mini Game (Trivia) -->
+  <div id="triviaPage" class="container">
     <div class="quiz-container">
-      <h2>Sebelum melanjutkan, jawab pertanyaan berikut:</h2>
+      <h2>Jawab semua pertanyaan ini dulu yaa 😊</h2>
       <div id="quiz"></div>
       <button id="submit">Kirim Jawaban</button>
       <div id="results"></div>
@@ -18,7 +18,7 @@
   </div>
 
   <!-- Halaman PIN -->
-  <div id="pinPage" class="container">
+  <div id="pinPage" class="container hidden">
     <div class="pin-display" id="pinDisplay">____</div>
     <div class="keypad">
       <button onclick="appendPin('1')">1</button>
@@ -30,22 +30,21 @@
       <button onclick="appendPin('7')">7</button>
       <button onclick="appendPin('8')">8</button>
       <button onclick="appendPin('9')">9</button>
-      <button onclick="clearPin()">←</button>
+      <button onclick="clearPin()">&larr;</button>
       <button onclick="appendPin('0')">0</button>
       <button onclick="submitPin()">OK</button>
     </div>
   </div>
 
   <!-- Halaman Ucapan -->
-  <div id="greetingPage" class="container">
-    <div class="background-overlay"></div>
-    <img src="images/birthday.png" alt="Happy Birthday" class="decorative-image" />
+  <div id="greetingPage" class="container hidden">
+    <img src="images/birthday.png" alt="Selamat Ulang Tahun" class="decorative-image" />
     <div id="typingText"></div>
   </div>
 
   <!-- Audio -->
+  <audio id="backsound" src="audio/backsound.mp3" loop></audio>
   <audio id="clickSound" src="audio/click.mp3"></audio>
-  <audio id="typingSound" src="audio/typing.mp3" preload="auto"></audio>
 
   <script src="script.js"></script>
 </body>
