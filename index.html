@@ -3,24 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HAPPY BIRTHDAY SAYANG</title>
+  <title>Happy Birthday Sayang</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Efek latar bunga jatuh -->
-  <div id="background"></div>
-
-  <!-- Trivia -->
+  <!-- Halaman Trivia -->
   <div id="triviaPage" class="container active">
     <div class="quiz-container">
-      <h2>Sebelum lanjut, jawab pertanyaan berikut:</h2>
+      <h2>Sebelum melanjutkan, jawab pertanyaan berikut:</h2>
       <div id="quiz"></div>
       <button id="submit">Kirim Jawaban</button>
       <div id="results"></div>
     </div>
   </div>
 
-  <!-- PIN -->
+  <!-- Halaman PIN -->
   <div id="pinPage" class="container">
     <div class="pin-display" id="pinDisplay">____</div>
     <div class="keypad">
@@ -39,19 +36,16 @@
     </div>
   </div>
 
-  <!-- Ucapan -->
+  <!-- Halaman Ucapan -->
   <div id="greetingPage" class="container">
-    <img src="images/birthday.png" alt="Happy Birthday Sayang" class="decorative-image" />
-    <div class="greeting-overlay">
-  <div id="typingText"></div>
-</div>
-
+    <div class="background-overlay"></div>
+    <img src="images/birthday.png" alt="Happy Birthday" class="decorative-image" />
+    <div id="typingText"></div>
+  </div>
 
   <!-- Audio -->
-  <audio id="clickSound" src="audio/click.mp3" preload="auto"></audio>
-<audio id="typingSound" src="audio/typing.mp3" preload="auto"></audio>
-
-
+  <audio id="clickSound" src="audio/click.mp3"></audio>
+  <audio id="typingSound" src="audio/typing.mp3" preload="auto"></audio>
 
   <script src="script.js"></script>
 </body>
