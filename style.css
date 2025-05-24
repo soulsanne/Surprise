@@ -108,6 +108,25 @@ body {
   z-index: 1;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('images/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.greeting-overlay {
+  background-color: rgba(255, 255, 255, 0.75); /* semi-transparan putih */
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 700px;
+  margin: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
 @keyframes fall {
   0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(100vh); opacity: 0; }
