@@ -8,7 +8,6 @@ const typingText = document.getElementById("typingText");
 const clickSound = document.getElementById("clickSound");
 const typingSound = document.getElementById("typingSound");
 
-// Trivia Quiz
 const triviaPage = document.getElementById("triviaPage");
 const quizContainer = document.getElementById("quiz");
 const resultsContainer = document.getElementById("results");
@@ -48,7 +47,7 @@ function buildQuiz() {
   const output = [];
   myQuestions.forEach((currentQuestion, questionNumber) => {
     const answers = [];
-    for (letter in currentQuestion.answers) {
+    for (let letter in currentQuestion.answers) {
       answers.push(
         `<label>
            <input type="radio" name="question${questionNumber}" value="${letter}">
@@ -123,14 +122,14 @@ function submitPin() {
     pinPage.classList.remove("active");
     greetingPage.classList.add("active");
     startTyping();
-    setInterval(createFlower, 400);
+    startBackgroundFlowers();
   } else {
     alert("PIN salah!");
     clearPin();
   }
 }
 
-// Teks ucapan
+// Typing Message
 const message = `Selamat bertambah usia, bayikk gede kesayangan aku! 👶🏻🎂🩷🎉
 
 Semoga kamu sentiasa menjadi insan yang pemurah, rajin beribadat, dan diberkahi umur sepanjang hidupmu. 💞✨
@@ -152,12 +151,15 @@ function startTyping() {
   }
 }
 
-// Efek bunga jatuh
-function createFlower() {
-  const flower = document.createElement("div");
-  flower.classList.add("falling-flower");
-  flower.style.left = Math.random() * window.innerWidth + "px";
-  flower.textContent = Math.random() > 0.5 ? "🌸" : "🌺";
-  document.body.appendChild(flower);
-  setTimeout(() => flower.remove(), 8000);
+// 🌸 Falling Flower Background
+function startBackgroundFlowers() {
+  setInterval(() => {
+    const flower = document.createElement("div");
+    flower.classList.add("falling-flower");
+    flower.style.left = Math.random() * window.innerWidth + "px";
+    flower.style.fontSize = Math.random() * 20 + 20 + "px";
+    flower.textContent = Math.random() > 0.5 ? "🌸" : "🌺";
+    document.getElementById("background").appendChild(flower);
+    setTimeout(() => flower.remove(), 8000);
+  }, 400);
 }
