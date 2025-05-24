@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartu Ucapan Ulang Tahun</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to top right, #fff0f5, #ffe4e1);
+      overflow: hidden;
+    }
+    .container {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      animation: fadeIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .active {
+      display: flex;
+    }
+
+    .keypad, .pin-display {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 200px;
+      margin-top: 20px;
+    }
+    .keypad button {
+      width: 60px;
+      height: 60px;
+      font-size: 20px;
+      margin: 5px;
+      border-radius: 10px;
+      border: none;
+      background-color: #ffb6c1;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .keypad button.active {
+      background-color: #ff69b4;
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #ff1493;
+    }
+
+    .pin-display {
+      font-size: 30px;
+      letter-spacing: 10px;
+      margin-bottom: 10px;
+      color: #db7093;
+    }
+
+    #typingText {
+      white-space: pre-wrap;
+      font-size: 18px;
+      max-width: 600px;
+      margin: auto;
+      color: #8b0000;
+    }
+
+    .falling-flower {
+      position: absolute;
+      top: -50px;
+      font-size: 24px;
+      animation: fall 8s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    .question {
+      background: #fff0f5;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    button.answer {
+      display: block;
+      margin: 10px auto;
+      background-color: #ff69b4;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Trivia Section -->
+  <div id="triviaPage" class="container active">
+    <div class="question">
+      <h2>Sebelum masuk, jawab pertanyaan ini:</h2>
+      <p>Berapa tanggal ulang tahun kamu?</p>
+      <button class="answer" onclick="checkAnswer('12')">12</button>
+      <button class="answer" onclick="checkAnswer('17')">17</button>
+      <button class="answer" onclick="checkAnswer('21')">21</button>
+    </div>
+  </div>
+
+  <!-- PIN Section -->
+  <div id="pinPage" class="container">
+    <div class="pin-display" id="pinDisplay">____</div>
+    <div class="keypad">
+      <button onclick="appendPin('1')">1</button>
+      <button onclick="appendPin('2')">2</button>
+      <button onclick="appendPin('3')">3</button>
+      <button onclick="appendPin('4')">4</button>
+      <button onclick="appendPin('5')">5</button>
+      <button onclick="appendPin('6')">6</button>
+      <button onclick="appendPin('7')">7</button>
+      <button onclick="appendPin('8')">8</button>
+      <button onclick="appendPin('9')">9</button>
+      <button onclick="clearPin()">←</button>
+      <button onclick="appendPin('0')">0</button>
+      <button onclick="submitPin()">OK</button>
+    </div>
+  </div>
+
+  <!-- Greeting Section -->
+  <div id="greetingPage" class="container">
+    <div id="typingText"></div>
+  </div>
+
+  <script>
+    const correctPin = "1712";
+    let currentPin = "";
+
+    const pinDisplay = document.getElementById("pinDisplay");
+    const pinPage = document.getElementById("pinPage");
+    const greetingPage = document.getElementById("greetingPage");
+    const typingText = document.getElementById("typingText");
+
+    function appendPin(num) {
+      if (currentPin.length < 4) {
+        currentPin += num;
+        pinDisplay.textContent = currentPin.padEnd(4, "_");
+
+        const buttons = document.querySelectorAll('.keypad button');
+        buttons.forEach(btn => {
+          if (btn.textContent === num) {
+            btn.classList.add("active");
+            setTimeout(() => btn.classList.remove("active"), 150);
+          }
+        });
+      }
+    }
+
+    function clearPin() {
+      currentPin = "";
+      pinDisplay.textContent = "____";
+    }
+
+    function submitPin() {
+      if (currentPin === correctPin) {
+        pinPage.classList.remove("active");
+        greetingPage.classList.add("active");
+        startTyping();
+        setInterval(createFlower, 500);
+      } else {
+        alert("PIN salah!");
+        clearPin();
+      }
+    }
+
+    const message = `Selamat bertambah usia, bayikk gede kesayangan aku! 👶🏻🎂🩷🎉
+
+Semoga kamu sentiasa menjadi insan yang pemurah, rajin beribadat, dan diberkahi umur sepanjang hidupmu. 💞✨
+
+Semoga segala kesulitanmu dilapangkan, rezekimu dilimpahkan, dan perjalanan hidupmu dipermudahkan hingga ke akhir hayat. 💘🌈
+
+Semoga kamu—dan kita—direzekikan jodoh yang baik, bertanggungjawab dan bertolak ansur. Yang mampu menjaga dan memimpin rumahtangga ke jalan yang benar dan penuh keberkatan. 💝🏡
+
+Semoga setiap doa, impian dan harapan yang kamu impikan dan dambakan… dimakbulkan, satu demi satu. 🙏🏻🌟`;
+
+    let i = 0;
+    function startTyping() {
+      if (i < message.length) {
+        typingText.textContent += message.charAt(i);
+        i++;
+        setTimeout(startTyping, 50);
+      }
+    }
+
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.classList.add("falling-flower");
+      flower.style.left = Math.random() * window.innerWidth + "px";
+      flower.textContent = Math.random() > 0.5 ? "🌸" : "🌺";
+      document.body.appendChild(flower);
+      setTimeout(() => flower.remove(), 8000);
+    }
+
+    function checkAnswer(answer) {
+      if (answer === "17") {
+        document.getElementById("triviaPage").classList.remove("active");
+        pinPage.classList.add("active");
+      } else {
+        alert("Jawaban salah. Coba lagi ya!");
+      }
+    }
+  </script>
+</body>
+</html>
