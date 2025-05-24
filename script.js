@@ -153,17 +153,16 @@ function startTyping() {
   if (i < message.length) {
     typingText.textContent += message.charAt(i);
 
-    // Putar suara tiap 2 huruf agar tidak spam
-    if (i % 2 === 0) {
-      const sound = typingSound.cloneNode();
-      sound.play();
+    // Hanya play kalau audio sedang tidak berjalan
+    if (typingSound.paused) {
+      typingSound.currentTime = 0;
+      typingSound.play();
     }
 
     i++;
-    setTimeout(startTyping, 50); // ketik lebih cepat
+    setTimeout(startTyping, 50);
   }
 }
-
 
 
 // 🌸 Falling Flower Background
