@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kartu Ucapan Ulang Tahun</title>
+  <title>Ucapan Ulang Tahun</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Halaman Trivia -->
+  <!-- Efek latar bunga jatuh -->
+  <div id="background"></div>
+
+  <!-- Trivia -->
   <div id="triviaPage" class="container active">
     <div class="quiz-container">
-      <h2>Sebelum melanjutkan, jawab pertanyaan berikut:</h2>
+      <h2>Sebelum lanjut, jawab pertanyaan berikut:</h2>
       <div id="quiz"></div>
       <button id="submit">Kirim Jawaban</button>
       <div id="results"></div>
     </div>
   </div>
 
-  <!-- Halaman PIN -->
+  <!-- PIN -->
   <div id="pinPage" class="container">
     <div class="pin-display" id="pinDisplay">____</div>
     <div class="keypad">
@@ -36,7 +39,7 @@
     </div>
   </div>
 
-  <!-- Halaman Ucapan -->
+  <!-- Ucapan -->
   <div id="greetingPage" class="container">
     <img src="images/birthday.png" alt="Selamat Ulang Tahun" class="decorative-image" />
     <div id="typingText"></div>
