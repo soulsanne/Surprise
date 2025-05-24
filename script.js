@@ -100,7 +100,9 @@ function appendPin(num) {
   if (currentPin.length < 4) {
     currentPin += num;
     pinDisplay.textContent = currentPin.padEnd(4, "_");
-    clickSound.play();
+   clickSound.currentTime = 0;
+clickSound.play().catch(() => {});
+
 
     const buttons = document.querySelectorAll('.keypad button');
     buttons.forEach(btn => {
@@ -144,8 +146,9 @@ let i = 0;
 function startTyping() {
   if (i < message.length) {
     typingText.textContent += message.charAt(i);
-    typingSound.currentTime = 0;
-    typingSound.play();
+   typingSound.currentTime = 0;
+typingSound.play().catch(() => {});
+
     i++;
     setTimeout(startTyping, 60);
   }
