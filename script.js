@@ -46,16 +46,13 @@ const myQuestions = [
 
 function buildQuiz() {
   const output = [];
-
   myQuestions.forEach((currentQuestion, questionNumber) => {
     const answers = [];
-
     for (letter in currentQuestion.answers) {
       answers.push(
         `<label>
            <input type="radio" name="question${questionNumber}" value="${letter}">
-           ${letter} :
-           ${currentQuestion.answers[letter]}
+           ${letter} : ${currentQuestion.answers[letter]}
          </label>`
       );
     }
@@ -71,7 +68,6 @@ function buildQuiz() {
 
 function showResults() {
   const answerContainers = quizContainer.querySelectorAll(".answers");
-
   let numCorrect = 0;
 
   myQuestions.forEach((currentQuestion, questionNumber) => {
@@ -81,9 +77,9 @@ function showResults() {
 
     if (userAnswer === currentQuestion.correctAnswer) {
       numCorrect++;
-      answerContainers[questionNumber].style.color = "green";
+      answerContainer.style.color = "green";
     } else {
-      answerContainers[questionNumber].style.color = "red";
+      answerContainer.style.color = "red";
     }
   });
 
@@ -105,9 +101,6 @@ function appendPin(num) {
   if (currentPin.length < 4) {
     currentPin += num;
     pinDisplay.textContent = currentPin.padEnd(4, "_");
-
-    // Putar suara klik
-    clickSound.currentTime = 0;
     clickSound.play();
 
     const buttons = document.querySelectorAll('.keypad button');
@@ -130,13 +123,14 @@ function submitPin() {
     pinPage.classList.remove("active");
     greetingPage.classList.add("active");
     startTyping();
+    setInterval(createFlower, 400);
   } else {
     alert("PIN salah!");
     clearPin();
   }
 }
 
-// Pesan ucapan
+// Teks ucapan
 const message = `Selamat bertambah usia, bayikk gede kesayangan aku! 👶🏻🎂🩷🎉
 
 Semoga kamu sentiasa menjadi insan yang pemurah, rajin beribadat, dan diberkahi umur sepanjang hidupmu. 💞✨
@@ -147,22 +141,23 @@ Semoga kamu—dan kita—direzekikan jodoh yang baik, bertanggungjawab dan berto
 
 Semoga setiap doa, impian dan harapan yang kamu impikan dan dambakan… dimakbulkan, satu demi satu. 🙏🏻🌟`;
 
+let i = 0;
 function startTyping() {
-  let i = 0;
-  typingSound.currentTime = 0;
-  typingSound.loop = true;
-  typingSound.play();
-
-  function type() {
-    if (i < message.length) {
-      typingText.textContent += message.charAt(i);
-      i++;
-      setTimeout(type, 50);
-    } else {
-      typingSound.pause();
-      typingSound.currentTime = 0;
-    }
+  if (i < message.length) {
+    typingText.textContent += message.charAt(i);
+    typingSound.currentTime = 0;
+    typingSound.play();
+    i++;
+    setTimeout(startTyping, 60);
   }
+}
 
-  type();
+// Efek bunga jatuh
+function createFlower() {
+  const flower = document.createElement("div");
+  flower.classList.add("falling-flower");
+  flower.style.left = Math.random() * window.innerWidth + "px";
+  flower.textContent = Math.random() > 0.5 ? "🌸" : "🌺";
+  document.body.appendChild(flower);
+  setTimeout(() => flower.remove(), 8000);
 }
